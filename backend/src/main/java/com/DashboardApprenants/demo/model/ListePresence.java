@@ -1,6 +1,7 @@
 package com.DashboardApprenants.demo.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -8,11 +9,14 @@ public class ListePresence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Temporal(TemporalType.DATE)
     Date date;
+    @Temporal(TemporalType.TIME)
     Date heure_arriver;
+    @Temporal(TemporalType.TIME)
     Date heure_depart;
-    String nom;
-    String prenom;
+    @ManyToOne
+    private Apprenant apprenants;
     @ManyToOne
     private Admin id_admin;
 
@@ -51,19 +55,19 @@ public class ListePresence {
         this.heure_depart = heure_depart;
     }
 
-    public String getNom() {
-        return nom;
+    public Apprenant getApprenants() {
+        return apprenants;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setApprenants(Apprenant apprenants) {
+        this.apprenants = apprenants;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public Admin getId_admin() {
+        return id_admin;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setId_admin(Admin id_admin) {
+        this.id_admin = id_admin;
     }
 }

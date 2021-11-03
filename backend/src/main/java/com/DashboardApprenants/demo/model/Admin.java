@@ -15,14 +15,22 @@ public class Admin {
     private String password;
     @OneToMany(mappedBy = "id_admin")
     private Collection<ListePresence> listePresences;
-    @OneToMany
-    private Collection<Utilisateur> utilisateurs;
+    @OneToMany(mappedBy = "id_admin")
+    private Collection<Apprenant> apprenants;
 
     public Admin() {
     }
 
     public Long getId() {
         return id;
+    }
+
+    public Collection<Apprenant> getApprenants() {
+        return apprenants;
+    }
+
+    public void setApprenants(Collection<Apprenant> apprenants) {
+        this.apprenants = apprenants;
     }
 
     public void setId(Long id) {
@@ -60,4 +68,13 @@ public class Admin {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Collection<ListePresence> getListePresences() {
+        return listePresences;
+    }
+
+    public void setListePresences(Collection<ListePresence> listePresences) {
+        this.listePresences = listePresences;
+    }
+
 }
