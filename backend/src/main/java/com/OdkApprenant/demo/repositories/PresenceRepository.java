@@ -15,10 +15,6 @@ import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
 @RepositoryRestResource
 @CrossOrigin("*")
 public interface PresenceRepository extends JpaRepository<Presence, Integer>{
-//	@Query(value = "SELECT * FROM Presence WHERE date Like %?1%", nativeQuery = true)
-//	List<Match> findByMatchMonthAndMatchDay(@Param ("jour") String jour);
-//	@Query("select e from Presence e where day(e.date) = ?1 ")
-//	List<Presence> getByDay(int day);
 	Optional<Presence>findByDate(@Param("date")Date date);
 	List<Presence> findByDateBeforeAndDateAfter(@Param("startDate")Date startDate,@Param("enDate") Date endDate);
 

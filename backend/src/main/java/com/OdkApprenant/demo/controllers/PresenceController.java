@@ -7,17 +7,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.OdkApprenant.demo.model.Presence;
 import com.OdkApprenant.demo.services.PresenceService;
 import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
 
 @RestController
+@CrossOrigin("*")
 public class PresenceController {
 	@Autowired
 	private PresenceService presenceService;

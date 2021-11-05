@@ -14,35 +14,25 @@ import net.bytebuddy.implementation.bytecode.Throw;
 public class ApprenantServiceImp implements ApprenantService {
 	@Autowired
 	ApprenantRepository apprenantRepository;
-	
-	
 
 	@Override
 	public Apprenant save(Apprenant apprenant) {
-		
 		return apprenantRepository.save(apprenant);
-		
-		
 	}
 
 	@Override
 	public List<Apprenant> listeApprenant() {
-		// TODO Auto-generated method stub
 		return apprenantRepository.findAll();
-		
 	}
 
 	@Override
 	public Apprenant apprenantById(Integer id) {
-		// TODO Auto-generated method stub
 		return apprenantRepository.findById(id).get();
-		
 	}
 
 	@Override
 	public void delete(Integer id) {
 		apprenantRepository.deleteById(id);
-		
 	}
 	@Override
 	public Apprenant update(Integer id, Apprenant apprenant) {
@@ -64,13 +54,6 @@ public class ApprenantServiceImp implements ApprenantService {
 
 	@Override
 	public Optional<Apprenant> rechercher(String login, String password)  {
-		
 		return apprenantRepository.findApprenantByLoginAndPassword(login, password);
-		
 	}
-
-	
-	
-	
-
 }
