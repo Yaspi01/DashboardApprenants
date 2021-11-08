@@ -10,18 +10,23 @@ import { ListService } from 'src/app/services/list.service';
 export class AddComponent implements OnInit {
 
   constructor(private student:ListService) { }
-  addStudent = new FormGroup({ 
+  addStudent = new FormGroup({
     prenom : new FormControl(''),
     nom : new FormControl(''),
     age : new FormControl(''),
     email : new FormControl(''),
-    password : new FormControl(''),
-    genre : new FormControl(''),
+      telephone: new FormControl(""),
+      login : new FormControl(''),
+      status : new FormControl(''),
+      profile : new FormControl(''),
+      password : new FormControl(''),
   }
   );
 
   ngOnInit(): void {
   }
+
+
   SaveData(){
     // console.log(this.addStudent.value);
     this.student.saveStudentData(this.addStudent.value).subscribe((result)=>{

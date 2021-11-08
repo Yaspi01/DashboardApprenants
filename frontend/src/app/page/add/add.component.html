@@ -3,7 +3,7 @@
     <div class="mb-3">
         <label class="form-label">Prenom</label>
         <input type="text" class="form-control" formControlName="prenom" >
-      </div>
+    </div>
     <div class="mb-3">
       <label  class="form-label">Nom</label>
       <input type="text" class="form-control" formControlName="nom" >
@@ -16,15 +16,34 @@
       <label  class="form-label">Email</label>
       <input type="email" class="form-control" formControlName="email" >
     </div>
-    <div class="mb-3">
-      <label  class="form-label">Mot de passe</label>
-      <input type="password" class="form-control" formControlName="password" >
-    </div>
-    <div class="mb-3">
-      <label  class="form-label">Genre</label>
-      <input type="text" class="form-control" formControlName="genre" >
-    </div>
-    
+  <div class="mb-3">
+    <label  class="form-label">Téléphone</label>
+    <input type="number" class="form-control" formControlName="telephone" >
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Login</label>
+    <input type="text" class="form-control" formControlName="login" >
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Status</label>
+    <select class="form-control" formControlName="status">
+      <option value="Activer">Activer</option>
+      <option value="Desactiver">Desactiver</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Profile</label>
+    <select class="form-control" formControlName="profile">
+      <option value="Apprenant">Apprenant</option>
+      <option value="Formateur">Formateur</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Mot de passe</label>
+    <input type="password" class="form-control" formControlName="password" >
+  </div>
+
+
     <button type="submit" class="btn btn-primary">Envoyer</button>
   </form>
 </div>
