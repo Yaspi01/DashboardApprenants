@@ -10,7 +10,7 @@ import { PresenceService } from 'src/app/services/presence.service';
 export class AddPresenceComponent implements OnInit {
 
   constructor(private presence:PresenceService) { }
-  addPresence = new FormGroup({ 
+  addPresence = new FormGroup({
     prenom : new FormControl(''),
     nom : new FormControl(''),
     age : new FormControl(''),

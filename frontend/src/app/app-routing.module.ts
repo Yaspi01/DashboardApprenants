@@ -5,7 +5,7 @@ import { ListComponent } from './page/list/list.component';
 import { UpdateComponent } from './page/update/update.component';
 import {IntervalComponent} from './page/list-presence/interval/interval.component';
 import { AddPresenceComponent } from './page/list-presence/add-presence/add-presence.component';
-import { AddFormateurComponent } from './page/formateur/add-formateur/add-formateur.component';
+import {AddPrenceComponent} from "./page/list-presence/add/add.component";
 
 const routes: Routes = [
 {
@@ -17,16 +17,12 @@ const routes: Routes = [
   component:AddComponent
 },
 {
-  path:'add-formateur',
-  component:AddFormateurComponent
-},
-{
   path:'update/:id',
   component:UpdateComponent
 },
 {
   path:'add-presence',
-  component:AddPresenceComponent
+  component:AddPrenceComponent
 },
 {
   path:'presence-intervall',

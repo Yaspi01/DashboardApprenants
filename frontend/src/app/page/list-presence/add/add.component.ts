@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { ListService } from 'src/app/services/list.service';
+import {PresenceService} from "../../../services/presence.service";
+import {UtilisateurService} from "../../../services/utilisateur.service";
 
 @Component({
   selector: 'app-add',
@@ -10,26 +11,36 @@ import { ListService } from 'src/app/services/list.service';
 export class AddPrenceComponent implements OnInit {
 
 
-  constructor(private student:ListService) { }
-  addStudent = new FormGroup({ 
-    prenom : new FormControl(''),
-    nom : new FormControl(''),
-    age : new FormControl(''),
-    email : new FormControl(''),
-    password : new FormControl(''),
-    genre : new FormControl(''),
-  }
-
-  );
+  don: any
+  userD: any
+  constructor( private list: ListService,
+               private presence: PresenceService,
+               private user: UtilisateurService
+               ) { }
+  listData : any=[]
   ngOnInit(): void {
+    this.list.getAllStudent().subscribe((allData)=>{
+      console.log (allData);
+      return this.listData=allData;
+    });
+
   }
 
-  SaveData(){
-    // console.log(this.addStudent.value);
-    this.student.saveStudentData(this.addStudent.value).subscribe((result)=>{
-      console.log(result);
+  addPresence(user: any){
+    const donnee = this.user.singleUser(user).subscribe(data=>{
+      this.don = data;
+      this.userD = {"users": this.don}
+      console.log(this.userD)
+      this.presence.ajoutPresence(this.userD)
     })
-
   }
+/*addStudent = new FormGroup({
+  prenom : new FormControl(''),
+  nom : new FormControl(''),
+  age : new FormControl(''),
+  email : new FormControl(''),
+  password : new FormControl(''),
+  genre : new FormControl(''),
+}*/
 
 }

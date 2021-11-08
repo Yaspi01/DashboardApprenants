@@ -23,10 +23,8 @@ public class Utilisateur {
     private String email;
     private String login;
     private String password;
-    @Enumerated(EnumType.STRING)
     private UtilisateurStatut utilisateurStatut;
     private LocalDateTime dateCreation = LocalDateTime.now();
     private LocalDateTime dateModification = LocalDateTime.now();
-    @Enumerated(EnumType.STRING)
     private Profil profil;
 }

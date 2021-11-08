@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { PresenceService } from 'src/app/services/presence.service';
 import {Router} from "@angular/router";
 import {ListService} from "../../../services/list.service";

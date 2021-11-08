@@ -16,6 +16,12 @@ export class PresenceService {
   public dateInterval(dateDebut:any,dateFin:any){
     return this.http.get(this.url+"/listByIntervale/dateDebut="+dateDebut+"&dateFin="+dateFin)
   }
+
+  public ajoutPresence(presence: any){
+    this.http.post(this.url+'/add',presence).subscribe(data=>{
+      console.log('success')
+    })
+  }
     // getPresenceByDay()
 
     // intervall(datedebut:any, datefin:any){
