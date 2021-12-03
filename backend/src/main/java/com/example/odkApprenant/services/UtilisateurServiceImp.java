@@ -2,7 +2,7 @@ package com.example.odkApprenant.services;
 
 import com.example.odkApprenant.model.Profil;
 import com.example.odkApprenant.model.Utilisateur;
-import com.example.odkApprenant.repositories.UsersRepository;
+import com.example.odkApprenant.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +14,17 @@ import java.util.Optional;
 public class UsersServiceImp implements UsersService{
 
     @Autowired
-    private UsersRepository usersRepository;
+    private UtilisateurRepository utilisateurRepository;
 
     @Override
     public void saveUsers(Utilisateur utilisateur) {
-        this.usersRepository.save(utilisateur);
+        this.utilisateurRepository.save(utilisateur);
     }
 
     @Override
     @Transactional
     public void editUsers(Long id, Utilisateur utilisateur) {
-        Utilisateur current = this.usersRepository.getById(id);
+        Utilisateur current = this.utilisateurRepository.getById(id);
         current.setNom(utilisateur.getNom());
         current.setPrenom(utilisateur.getPrenom());
         current.setAge(utilisateur.getTelephone());
@@ -39,26 +39,26 @@ public class UsersServiceImp implements UsersService{
 
     @Override
     public Optional<Utilisateur> getUsersById(Long id) {
-        return this.usersRepository.findById(id);
+        return this.utilisateurRepository.findById(id);
     }
 
     @Override
     public List<Utilisateur> getAllUsers() {
-        return (List<Utilisateur>) this.usersRepository.findAll();
+        return (List<Utilisateur>) this.utilisateurRepository.findAll();
     }
 
     @Override
     public void deleteUsers(Long id) {
-        this.usersRepository.deleteById(id);
+        this.utilisateurRepository.deleteById(id);
     }
 
     @Override
     public Utilisateur getAuth(String login, String password) {
-        return this.usersRepository.findByLoginAndPassword(login, password);
+        return this.utilisateurRepository.findByLoginAndPassword(login, password);
     }
 
     @Override
     public List<Utilisateur> getAllUsersByProfil(Profil profil) {
-        return this.usersRepository.getUsersByProfil(profil);
+        return this.utilisateurRepository.getUsersByProfil(profil);
     }
 }

@@ -2,7 +2,7 @@ package com.example.odkApprenant.controllers;
 
 import com.example.odkApprenant.model.Profil;
 import com.example.odkApprenant.model.Utilisateur;
-import com.example.odkApprenant.services.UsersServiceImp;
+import com.example.odkApprenant.services.UtilisateurServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,53 +11,53 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("user")
+@RequestMapping("/utilisateur")
 public class UsersController {
     @Autowired
-    private UsersServiceImp usersServiceImp;
+    private UtilisateurServiceImp utilisateurServiceImp;
 
     //Ajouter un utilisateur, l'attribut profile est la principale différence
-    @PostMapping("/save")
+    @PostMapping("/ajout")
     public String saveApprenant(@RequestBody Utilisateur utilisateur){
-        this.usersServiceImp.saveUsers(utilisateur);
-        return "Enregistrement reussi...";
+        utilisateurServiceImp.ajouterUtilisateur(utilisateur);
+        return "Enregistrement effectuée avec succès...";
     }
 
     //La mise en jour d'un utilisateur
-    @PutMapping("/update/{id}")
+    @PutMapping("/modifier/{id}")
     public String editApprenant(@PathVariable("id") Long id, @RequestBody Utilisateur utilisateur){
-        this.usersServiceImp.editUsers(id, utilisateur);
+        utilisateurServiceImp.modifierUtilisateur(id, utilisateur);
         return "Apprenant modifié avec success...";
     }
 
     //Recuperer un utilisateur par son id
-    @GetMapping("/getOne/{id}")
+    @GetMapping("/afficherById/{id}")
     public Optional<Utilisateur> getApprenantById(@PathVariable("id") Long id){
-        return this.usersServiceImp.getUsersById(id);
+        return utilisateurServiceImp.utilisateurById(id);
     }
 
     //Recuperer tous les utilisateurs
-    @GetMapping("/getAll")
+    @GetMapping("/listUtilisateur")
     public List<Utilisateur> getAllUsers(){
-        return (List<Utilisateur>) usersServiceImp.getAllUsers();
+        return utilisateurServiceImp.afficherUtilisateur();
     }
 
     //Recuperer les utilisateurs par profil
-    @GetMapping("/users/{profil}")
+    @GetMapping("/profile/{profil}")
     public List<Utilisateur> getAllUserByProfil(@PathVariable("profil") Profil profil){
-        return this.usersServiceImp.getAllUsersByProfil(profil);
+        return utilisateurServiceImp.utilisateurByProfil(profil);
     }
 
     //Supprimer un utilisateur par son id
     @DeleteMapping("/delete/{id}")
     public String deleteAnUsers(@PathVariable("id") Long id){
-        this.usersServiceImp.deleteUsers(id);
+        utilisateurServiceImp.deleteUtilisateur(id);
         return "Apprenant effacé avec succèss...";
     }
 
-    @GetMapping("/auth/{login}&{password}")
+    @GetMapping("/login/{login}&{password}")
     public Utilisateur checkUser(@PathVariable("login") String login,
                                  @PathVariable("password") String password){
-        return this.usersServiceImp.getAuth(login, password);
+        return utilisateurServiceImp.getAuth(login, password);
     }
 }
